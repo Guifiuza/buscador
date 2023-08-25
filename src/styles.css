@@ -11,18 +11,20 @@
     font-size: 85px;
     color: white;
     animation: flipTitle 2.5s;
+    
 }
 
 @keyframes flipTitle {
     from {
-        transform: rotateX(90deg);
+        transform: rotateX(180deg);
     }
 
     to {
         transform: rotateX(0deg);
     }
-}
 
+}
+  
 .containerInput {
     background-color: rgb(255, 255, 255, 0.2);
     padding: 15px;
@@ -30,6 +32,8 @@
     display: flex;
     border-radius: 8px;
     box-shadow: 1px 3px 8px rgba(0, 0, 0, 0, 5);
+    animation: flipTitle 2.5s;
+    
 }
 
 .containerInput input {
@@ -56,7 +60,7 @@
 }
 
 .buttonSearch:hover {
-    transform: scale(1.2);
+    transform: scale(1.4);
 }
 
 .main {
@@ -81,7 +85,7 @@
 
 @media (max-width: 620px) {
     .title{
-        font-size: 60px;
+        font-size: 50px;
         transition: 2.5s;
         transition-timing-function: ease-in-out;
     }
@@ -91,6 +95,10 @@
     .title{
         transition: 2.5s;
         transition-timing-function: ease-in-out;
+    }
+
+    .main {
+        max-width: 400px;
     }
     
 }

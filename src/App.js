@@ -1,16 +1,16 @@
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import "./styles.css";
-import { useState } from "react";
 import api from "./services/api";
+import { motion } from "framer-motion";
 
 function App() {
   const [input, setInput] = useState("");
   const [cep, setCep] = useState({});
 
   async function handleSearch() {
-    //01001000/json/
     if (input === "") {
-      alert("Preencha algum cep");
+      alert("Preencha algum CEP");
       return;
     }
 
@@ -19,14 +19,21 @@ function App() {
       setCep(response.data);
       setInput("");
     } catch {
-      alert("Desculpe, cep Inválido");
+      alert("Desculpe, CEP inválido");
       setInput("");
+    }
+  }
+
+  // Esta função trata a tecla "Enter" pressionada no input
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      handleSearch(); // Chama a função de busca ao pressionar "Enter"
     }
   }
 
   return (
     <div className="container">
-      <h1 className="title">Buscador CEP</h1>
+      <h1 className="title">Buscador de CEP</h1>
 
       <div className="containerInput">
         <input
@@ -34,6 +41,7 @@ function App() {
           placeholder="Digite seu CEP..."
           value={input}
           onChange={(event) => setInput(event.target.value)}
+          onKeyPress={handleKeyPress} // Adiciona o evento de teclado aqui
         />
 
         <button className="buttonSearch" onClick={handleSearch}>
